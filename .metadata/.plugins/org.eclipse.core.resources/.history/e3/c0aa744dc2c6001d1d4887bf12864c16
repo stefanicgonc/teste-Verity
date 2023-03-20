@@ -1,0 +1,15 @@
+@tag
+Feature: Titulo, contato
+  
+  Background:
+
+  Given que acesse o site da Verity "https://www.verity.com.br/"
+  
+  @tag1
+  Scenario: Validar titulo
+  And realizar a validacao dos titulos cultura e tech e realizar a validacao nossas solucoes para garantir que os elementos serao encontrados
+
+  Scenario: Validar formulario de contato
+  And click no menu contato, sessao vamos conversar
+  When quando preencher todos os dados 
+  Then seleciono o botao enviar

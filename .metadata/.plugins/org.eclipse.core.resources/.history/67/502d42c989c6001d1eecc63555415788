@@ -1,0 +1,67 @@
+package Steps;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import Elementos.Elementos;
+import Metodos.Metodos;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import junit.framework.Assert;
+
+public class Steps extends Metodos {
+	Elementos e = new Elementos();
+	Metodos m = new Metodos();
+
+	@Given("^que acesse o site da Verity \"([^\"]*)\"$")
+	public void que_acesse_o_site_da_Verity(String url) throws Throwable {
+		abrirnavegador(url);
+	}
+	@Given("^realizar a validação dos titulos para garantir que os elementos serao encontrados$")
+		public void testeCadastro() throws InterruptedException {
+			WebDriver driver = new ChromeDriver();
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+			driver.get("https://www.verity.com.br/");
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+			driver.findElement(By.xpath("//*[@id=\"comp-l0b60nwv\"]/div")).click();
+			driver.findElement(By.id("comp-l0b60nwv-dropdown-option-1")).click();
+			Assert.assertTrue(driver.findElement(By.xpath("//*[@id=\"comp-kwv1yb5l\"]")).getText().contains("Culture and Tech"));
+			driver.quit();
+	}	
+		@Test
+		public void testeCadastroPt() throws InterruptedException {
+			WebDriver driver = new ChromeDriver();
+			System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+			driver.get("https://www.verity.com.br/");
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+			Assert.assertEquals("Nossas soluções_",driver.findElement(By.xpath("//*[@id=\"comp-kwv1yx4h\"]")).getText());
+			driver.quit();
+	}
+
+	@Given("^click no menu contato, sessao vamos conversar$")
+	public void click_no_menu_contato_sessao_vamos_conversar() throws Throwable {
+     m.clicar(e.getBtnContato()"Contato sessao vamos conversar");
+	}
+
+	@When("^quando preencher todos os dados$")
+	public void quando_preencher_todos_os_dados() throws Throwable {
+    m.preencher("Stefani Cardoso",e.getCampoNome());
+    m.preencher("stefani_cgoncalves@hotmail.com",e.getCampoEmail());
+    m.preencher("11972401896",e.getCampotelefonecelular());
+    m.preencher("Nos conte o seu desafio", e.getCampoNosconteoseudesafio());
+    m.clicar(e.getcheckbox(), "Aceito receber mensagens da Verity");
+	}
+
+	@Then("^seleciono o botao enviar$")
+	public void seleciono_o_botao_enviar() throws Throwable {
+	m.selecionar(e.getBtnenviar());
+	}
+
+}

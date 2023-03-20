@@ -1,0 +1,23 @@
+package Elementos;
+
+import org.openqa.selenium.By;
+
+public class Elementos {
+
+	private By titulonossassolucoes = By.xpath("/html/body/div[1]/div/div[3]/div/main/div/div/div/div[2]/div/div/div/section[4]/div[2]/div/div[2]/div/div[1]/h1/span/font/font");
+	private By titulocultureetech = By.xpath("//*[@id=\"comp-kwv1yb5l\"]/p/span/span/span/span/span/span/font/font");
+	private By contatosessaovamosconversar = By.cssSelector("#comp-kwz6tqa9 > h1 > span > span:nth-child(1)");
+	
+	public By getTitulonossassolucoes() {
+		return titulonossassolucoes;
+	}
+	public By getTitulocultureetech() {
+		return titulocultureetech;
+	}
+	public By getBtContatosessaovamosconversar() {
+		return getBtContatosessaovamosconversar();
+		
+	}
+	
+	
+}
